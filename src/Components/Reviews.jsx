@@ -18,18 +18,20 @@ const Reviews = ({Id,prevRating,usersRated}) => {
     const[review,setReview]=useState([]);
     const[AddreviewState,setaddreviewState]=useState(false);
     const id=useParams();
-    const addReview= async ()=>{
+    const addReview= async (event)=>{
+        event.preventDefault();
         if(useAppstate.login){
         try{
-            setaddreviewState(true);
+            // setaddreviewState(true);
             setLoading(true);
+            // console.log(useAppstate.userName);
             await addDoc(reviewsRefe,{
                 thoughts:data,
                 movieId:id.id,
                 rating:rate,
                 name:useAppstate.userName,
                 timestamp: new Date().getTime()
-            })
+            });
             swal({
             title:"Successfully Added",
             icon:"success",
@@ -47,8 +49,9 @@ const Reviews = ({Id,prevRating,usersRated}) => {
     check();
         setRate(0);
         setData("");
+        navigate('/');
         setLoading(false);
-        setaddreviewState(false);
+        setaddreviewState(AddreviewState+1);
         }
         catch(error){
             swal({
@@ -66,6 +69,7 @@ const Reviews = ({Id,prevRating,usersRated}) => {
     useEffect(()=>{
     async function getReview(){
         setreviewLoading(true);
+        setReview([]);
         for(let i=0;i<=5000000;i++){
         }
         let quer=query(reviewsRefe,where('movieId','==',id.id));
@@ -78,6 +82,7 @@ const Reviews = ({Id,prevRating,usersRated}) => {
     getReview();
     },[AddreviewState])
 return (
+    <form onSubmit={addReview}>
     <div className="border-gray-600 border-t-2 w-full">
     <ReactStars
         value={rate}
@@ -92,8 +97,7 @@ return (
     placeholder='Share your thoughts......'
     className="mt-3 w-full p-2 text-lg bg-color outline-none border-solid"
     />
-    <button className="w-full text-lg btn-Header justify-center flex text-white mt-3 p-2 font-bold rounded-sm"
-    onClick={addReview}>
+    <button type={'submit'} className="w-full text-lg btn-Header justify-center flex text-white mt-3 p-2 font-bold rounded-sm">
     {loading? <TailSpin height={32} color='white'/>:"SHARE YOUR THOUGHTS"}
     </button>
     <div className="mt-4">
@@ -116,6 +120,7 @@ return (
         }
     </div>   
     </div>
+    </form>
 )
 }
 

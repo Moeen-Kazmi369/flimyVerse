@@ -45,12 +45,16 @@ background: linear-gradient(to left, #fdbb2d, #b21f1f, #1a2a6c); /* W3C, IE 10+/
     flex-direction: column;
     align-items: center;
     height: auto;
+    /* border: 2px solid red; */
   }
   .cardImg{
-    width: 80%;
+    width: 100%;
+    padding: 10px;
   }
   .cardData{
-    width: 80%;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
   }
   .header{
     flex-direction: column;

@@ -9,6 +9,7 @@ import Reviews from './Reviews';
 const Detials = () => {
     const {id}=useParams();
     const[detialLoading,setdetialLoading]=useState(false);
+    // const[count,setCount]=useState(0);
     const[data,setData]=useState({
         name:"",
         year:"",
@@ -17,6 +18,8 @@ const Detials = () => {
         rating:0,
         rated:0
     });
+    console.log(data.rating);
+    console.log(data.rated);
     useEffect(()=>{
         setdetialLoading(true);
         async function getData(){

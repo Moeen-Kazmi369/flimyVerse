@@ -5,9 +5,15 @@ import {getDocs,doc,deleteDoc} from 'firebase/firestore';
 import { moviesRefe } from '../Firebase/Firebase';
 import { MutatingDots } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import { Appstate } from '../App';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 const Cards = () => {
+    const navigate=useNavigate();
+    const useAppstate=useContext(Appstate);
     const[data,setData]=useState([]);
     const[loading,setLoading]=useState(false);
+    const[removeState,setRemoveState]=useState(false);
     useEffect(()=>{
         async function getData(){
             setLoading(true);
@@ -18,11 +24,19 @@ const Cards = () => {
         setLoading(false);
         }
         getData();
+        admin();
     },[]);
     const removeCard=async(movieId)=>{
         const movieref=doc(moviesRefe,movieId);
         await deleteDoc(movieref);
         setData((prv)=>prv.filter((docs)=>docs.id!==movieId));
+    }
+    const admin=()=>{
+        if("Kazmi.."===useAppstate.userName){
+            setRemoveState(true);
+        }else{
+            setRemoveState(false);
+        }
     }
 return (
     <div className='flex flex-wrap justify-around h-auto'>
@@ -43,9 +57,13 @@ return (
                 />
             </p>
             <p><span className="text-gray-400">Year:</span> {e.year}</p></div></Link>
+            {removeState?
         <button 
         onClick={()=>removeCard(e.id)} className="p-2 bg-red-500 text-white w-full cardbtn">REMOVE
+        </button>:<button 
+        onClick={()=>navigate(`detial/${e.id}`)} className="p-2 bg-red-500 text-white w-full cardbtn">REVIEW NOW
         </button>
+            }
         </div>
             );
     })}

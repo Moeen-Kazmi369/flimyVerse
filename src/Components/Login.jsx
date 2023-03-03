@@ -34,6 +34,8 @@ const Login = () => {
                         timer:3000
                     });
                     useAppstate.setLogin(true);
+                    useAppstate.setUserName(_data.username);
+                    // console.log(useAppstate.userName);
                 }
             });
             if(useAppstate.login){
