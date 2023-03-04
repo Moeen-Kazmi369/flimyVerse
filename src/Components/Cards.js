@@ -44,10 +44,10 @@ return (
         data.map((e,i)=>{
             const n=e;
             return(
-        <div key={i} className="m-5 ml-2 relative mr-2 bg font-bold home shadow-lg cursor-pointer cardHeight w-60">
+        <div key={i} className="m-5 ml-2 relative flex flex-col justify-between mr-2 bg font-bold home shadow-lg cursor-pointer cardHeight w-60">
         <Link to={`detial/${e.id}`}><div className="
-            w-full p-2"><img src={e.movieUrl} alt="" className="h-72 w-full"/></div>
-            <div className="p-2"><p className="break-words"><span className="text-gray-400">Name:</span> {e.name}</p>
+            w-full p-2 image-container"><img src={e.movieUrl} alt="" className="h-72 w-full"/></div>
+            <div className="px-2 pt-2"><p className="break-words"><span className="text-gray-400">Name:</span> {e.name}</p>
             <p className="flex items-center"><span className="text-gray-400 mr-2">Rating:</span> 
             <ReactStars
                 size={20}
