@@ -155,9 +155,14 @@ return (
         {form.movieUrl && (
             <img src={form.movieUrl} alt="Movie Poster" className="cardImg" />
         )}
-        <button onClick={() => inputRef.current.click()} className="text-white btn-Header rounded-md py-2 px-3 w-4/5 login-button">
+        <div className="flex flex-row justify-between">
+        <button onClick={() => inputRef.current.click()} className="text-white btn-Header animate-pulse rounded-md py-2 px-3 w-4/5 mr-2">
             UPLOAD MOVIE IMAGE 
         </button>
+        <button onClick={handleSearchPoster} className="ml-2 px-3 py-1 rounded-md btn-Header text-white hover:bg-gray-700 focus:outline-none animate-pulse focus:ring-2  focus:ring-gray-400 focus:ring-opacity-75 order-2">
+            GOOGLE
+        </button>
+        </div>
         </div>
     </div>
     </div>
