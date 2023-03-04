@@ -67,6 +67,9 @@ background: linear-gradient(to left, #fdbb2d, #b21f1f, #1a2a6c); /* W3C, IE 10+/
     height: auto;
     /* border: 2px solid red; */
   }
+  .cardHeight{
+    width: 30rem;
+  }
   .cardImg{
     width: 100%;
     padding: 10px;

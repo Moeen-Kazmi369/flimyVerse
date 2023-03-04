@@ -14,9 +14,9 @@ const Header = () => {
     }
 return (
     <div className="sticky header flex justify-between top-0 z-10 bg-color home cursor-pointer text-4xl font-bold p-3 text-center">
-        <Link to={'/'}><div className="mt-3">
-        {/* <img src="." alt="FilmyVerse logo" className="h-10 w-auto" /> */}
-        <span className="header-heading">FilmyVerse</span>
+        <Link to={'/'}><div>
+        <img src={process.env.PUBLIC_URL + '/logo.png'} alt="FilmyVerse logo" className="h-20 w-56" />
+        {/* <span className="header-heading">FilmyVerse</span> */}
         </div></Link>
         {useAppstate.login?
         <div className="flex">
